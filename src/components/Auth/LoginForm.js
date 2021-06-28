@@ -1,13 +1,17 @@
-import React, { useState, useEffect, useReducer, useRef } from 'react';
+import React, { useState, useEffect, useReducer, useRef, useContext } from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Auth.module.css';
 import Button from '../UI/Button/Button';
 
+import AuthContext from '../../store/AuthContext';
+
 const LoginForm = () => {
   const [formIsValid, setformIsValid] = useState(false);
   const [message, setMessage] = useState(null);
   const [token, setToken] = useState(null);
+
+  const authCtx = useContext(AuthContext);
 
   const emailInput = useRef();
   const passwordInput = useRef();
@@ -48,8 +52,8 @@ const LoginForm = () => {
   return (
     <Card className={classes.auth}>
       {message && <p className={classes.error}>{message}</p>}
-      {token && <p className={classes.success}>Login successfully.</p>}
-      {!token &&
+      {authCtx.isLoggedIn && <p className={classes.success}>Login successfully.</p>}
+      {!authCtx.isLoggedIn &&
         <form onSubmit={submitHandler}>
           <div className={classes.control}>
             <label htmlFor="email">Email</label>
