@@ -32,7 +32,7 @@ const SignupForm = () => {
     const signupData = {
       email: emailInput.current.value,
       fullname: fullnameInput.current.value,
-      fullname: passwordInput.current.value,
+      password: passwordInput.current.value,
     };
     fetch(signupAPI, {
       method: "POST",
