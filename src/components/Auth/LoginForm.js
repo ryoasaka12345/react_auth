@@ -9,7 +9,6 @@ import AuthContext from '../../store/AuthContext';
 const LoginForm = () => {
   const [formIsValid, setformIsValid] = useState(false);
   const [message, setMessage] = useState(null);
-  const [token, setToken] = useState(null);
 
   const authCtx = useContext(AuthContext);
 
@@ -41,8 +40,7 @@ const LoginForm = () => {
         return response.json();
       })
       .then(data => {
-        setToken(data.data);
-        console.log(token);
+        authCtx.login(data.data);
       })
       .catch((error) => {
         setMessage(error.message);
