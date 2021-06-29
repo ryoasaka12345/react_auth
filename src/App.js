@@ -1,12 +1,15 @@
-import React, { Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { Fragment, useContext } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
 import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 
+import AuthContext from './store/AuthContext';
+
 function App() {
+  const authCtx = useContext(AuthContext);
 
   return (
     <Layout>
@@ -15,10 +18,12 @@ function App() {
           <IndexPage />
         </Route>
         <Route path="/signup">
-          <SignupPage />
+          {authCtx.isLoggedIn && <Redirect to ="/" />}
+          {!authCtx.isLoggedIn && <SignupPage/>}
         </Route>
         <Route path="/login">
-          <LoginPage />
+          {authCtx.isLoggedIn && <Redirect to ="/" />}
+          {!authCtx.isLoggedIn && <LoginPage/>}
         </Route>
       </Switch>
     </Layout>
