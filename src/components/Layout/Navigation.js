@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContextProvider } from '../../store/AuthContext';
 
@@ -14,15 +14,21 @@ const Navigation = () => {
         <li>
           <NavLink activeClassName={classes.active} to="/" exact>Home</NavLink>
         </li>
-        <li>
-          <NavLink activeClassName={classes.active} to="/login">Login</NavLink>
-        </li>
-        <li>
-          <NavLink activeClassName={classes.active} to="/signup">Signup</NavLink>
-        </li>
-        <li>
-          <button onClick={authCtx.logout}>Logout</button>
-        </li>
+        {!authCtx.isLoggedIn &&
+          <li>
+            <NavLink activeClassName={classes.active} to="/login">Login</NavLink>
+          </li>
+        }
+        {!authCtx.isLoggedIn &&
+          <li>
+            <NavLink activeClassName={classes.active} to="/signup">Signup</NavLink>
+          </li>
+        }
+        {authCtx.isLoggedIn &&
+          <li>
+            <button onClick={authCtx.logout}>Logout</button>
+          </li>
+        }
       </ul>
     </nav>
   );
