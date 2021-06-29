@@ -29,16 +29,21 @@ const Navigation = () => {
             <NavLink activeClassName={classes.active} to="/changePass">Change pass</NavLink>
           </li>
         }
-        {authCtx.isLoggedIn &&
-          <li>
-            <button onClick={authCtx.logout}>Logout</button>
-          </li>
-        }
         <li>
           <NavLink activeClassName={classes.active} to="/profile">
             Profile
           </NavLink>
         </li>
+        <li>
+          <NavLink activeClassName={classes.active} to="/todosList">
+            ToDo
+          </NavLink>
+        </li>
+        {authCtx.isLoggedIn &&
+          <li>
+            <button onClick={authCtx.logout}>Logout</button>
+          </li>
+        }
       </ul>
     </nav>
   );

@@ -30,15 +30,17 @@ const ChangePasswordForm = () => {
             return;
         }
         const changePwAPI = `http://localhost:5151/change_password`;
-        console.log("token:", token);
-        axios.post(changePwAPI, {
-            headers: {
-                "Authorization": token
-            },
-            body: {
+        console.log(passwordInput.current.value);
+        axios.post(changePwAPI,
+            {
                 "password": passwordInput.current.value
+            },
+            {
+                headers: {
+                    "Authorization": token
+                },
             }
-        })
+        )
             .then(response => {
                 if (response.status == 200) {
                     setMessage("Change password successfully");
@@ -59,7 +61,7 @@ const ChangePasswordForm = () => {
                 {isShowForm &&
                     <form onSubmit={submitHandler}>
                         <div className={classes.control}>
-                        <label htmlFor="password">Password</label>
+                            <label htmlFor="password">Password</label>
                             <input
                                 type="password"
                                 id="password"
