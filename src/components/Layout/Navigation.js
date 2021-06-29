@@ -26,6 +26,11 @@ const Navigation = () => {
         }
         {authCtx.isLoggedIn &&
           <li>
+            <NavLink activeClassName={classes.active} to="/changePass">Change pass</NavLink>
+          </li>
+        }
+        {authCtx.isLoggedIn &&
+          <li>
             <button onClick={authCtx.logout}>Logout</button>
           </li>
         }

@@ -6,6 +6,7 @@ import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import ProfilePage from './pages/ProfilePage';
+import ChangePasswordPage from './pages/ChangePasswordPage';
 
 import AuthContext from './store/AuthContext';
 
@@ -19,15 +20,20 @@ function App() {
           <IndexPage />
         </Route>
         <Route path="/signup">
-          {authCtx.isLoggedIn && <Redirect to ="/" />}
-          {!authCtx.isLoggedIn && <SignupPage/>}
+          {authCtx.isLoggedIn && <Redirect to="/" />}
+          {!authCtx.isLoggedIn && <SignupPage />}
         </Route>
         <Route path="/login">
-          {authCtx.isLoggedIn && <Redirect to ="/" />}
-          {!authCtx.isLoggedIn && <LoginPage/>}
+          {authCtx.isLoggedIn && <Redirect to="/" />}
+          {!authCtx.isLoggedIn && <LoginPage />}
+        </Route>
+        <Route path="/changePass">
+          {!authCtx.isLoggedIn && <Redirect to="/" />}
+          {authCtx.isLoggedIn && <ChangePasswordPage />}
         </Route>
         <Route path="/profile">
-          <ProfilePage />
+          {!authCtx.isLoggedIn && <Redirect to="/" />}
+          {authCtx.isLoggedIn && <ProfilePage />}
         </Route>
       </Switch>
     </Layout>
