@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout';
 import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import ProfilePage from './pages/ProfilePage';
 
 import AuthContext from './store/AuthContext';
 
@@ -24,6 +25,9 @@ function App() {
         <Route path="/login">
           {authCtx.isLoggedIn && <Redirect to ="/" />}
           {!authCtx.isLoggedIn && <LoginPage/>}
+        </Route>
+        <Route path="/profile">
+          <ProfilePage />
         </Route>
       </Switch>
     </Layout>

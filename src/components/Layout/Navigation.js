@@ -29,6 +29,11 @@ const Navigation = () => {
             <button onClick={authCtx.logout}>Logout</button>
           </li>
         }
+        <li>
+          <NavLink activeClassName={classes.active} to="/profile">
+            Profile
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
