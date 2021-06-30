@@ -19,7 +19,7 @@
 
 .todo h2{
     font-size: 1.5rem;
-    color: rdb(72, 70, 70);
+    color: rgb(72, 70, 70);
 }
 
 .todo p {
