@@ -21,6 +21,7 @@ const TodosList = () => {
             .then(response => {
                 setTodos(response.data.data);
                 setError(null);
+                console.log(response.data.data);
             })
             .catch((error) => {
                 if (error.response) {
@@ -33,34 +34,45 @@ const TodosList = () => {
             });
     }, []);
 
-    console.dir(todos);
-    console.log(token);
+    let todosList = <p>No Todo</p>
+    if (todos != null) {
+        todosList = todos.map((todo) => (
+            <li ClassName={classes.todo}>
+                <h2>{todo.title}</h2>
+                <p>{todo.description}</p>
+            </li>
+        ))
+    }
 
     return (
         <ul className={classes["todos-list"]}>
-            <li className={classes.todo}>
-                <h2>Eu vix putent ceteros</h2>
-                <p>
-                    Eu vix putent ceteros. Et usu tempor perpetua, sea ludus labitur eu.
-                    Te has etiam tempor expetenda. Ex possit detracto nominati ius, vix te
-                    dicat dicam habemus, ei omnes primis omnesque ius. Eu vide erant
-                    reprimique duo. Ut doctus oporteat duo, cu eum labitur inciderint, nec
-                    illum virtute maluisset cu.
-                </p>
-            </li>
-            <li className={classes.todo}>
-                <h2>Eu vix putent ceteros</h2>
-                <p>
-                    Eu vix putent ceteros. Et usu tempor perpetua, sea ludus labitur eu.
-                    Te has etiam tempor expetenda. Ex possit detracto nominati ius, vix te
-                    dicat dicam habemus, ei omnes primis omnesque ius. Eu vide erant
-                    reprimique duo. Ut doctus oporteat duo, cu eum labitur inciderint, nec
-                    illum virtute maluisset cu.
-                </p>
-
-            </li>
+            {todosList}
         </ul>
     );
 };
 
 export default TodosList;
+
+{/* 
+<li className={classes.todo}>
+<h2>Eu vix putent ceteros</h2>
+<p>
+    Eu vix putent ceteros. Et usu tempor perpetua, sea ludus labitur eu.
+    Te has etiam tempor expetenda. Ex possit detracto nominati ius, vix te
+    dicat dicam habemus, ei omnes primis omnesque ius. Eu vide erant
+    reprimique duo. Ut doctus oporteat duo, cu eum labitur inciderint, nec
+    illum virtute maluisset cu.
+</p>
+</li>
+<li className={classes.todo}>
+<h2>Eu vix putent ceteros</h2>
+<p>
+    Eu vix putent ceteros. Et usu tempor perpetua, sea ludus labitur eu.
+    Te has etiam tempor expetenda. Ex possit detracto nominati ius, vix te
+    dicat dicam habemus, ei omnes primis omnesque ius. Eu vide erant
+    reprimique duo. Ut doctus oporteat duo, cu eum labitur inciderint, nec
+    illum virtute maluisset cu.
+</p>
+
+</li>
+ */}
