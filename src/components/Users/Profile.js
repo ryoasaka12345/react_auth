@@ -27,7 +27,7 @@ const Profile = () => {
                 if (error.response) {
                     if (error.response.status == 401) {
                         history.push("/login");
-                        return
+                        return;
                     }
                 }
                 setError(error.message);

@@ -33,7 +33,7 @@ const ChangePasswordForm = () => {
         console.log(passwordInput.current.value);
         axios.post(changePwAPI,
             {
-                "password": passwordInput.current.value
+                "new_password": passwordInput.current.value
             },
             {
                 headers: {

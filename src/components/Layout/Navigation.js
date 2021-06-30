@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { AuthContextProvider } from '../../store/AuthContext';
 
 import classes from './Navigation.module.css';
 import AuthContext from '../../store/AuthContext';
@@ -29,16 +28,20 @@ const Navigation = () => {
             <NavLink activeClassName={classes.active} to="/changePass">Change pass</NavLink>
           </li>
         }
-        <li>
-          <NavLink activeClassName={classes.active} to="/profile">
-            Profile
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeClassName={classes.active} to="/todosList">
-            ToDo
-          </NavLink>
-        </li>
+        {authCtx.isLoggedIn &&
+          <li>
+            <NavLink activeClassName={classes.active} to="/profile">
+              Profile
+            </NavLink>
+          </li>
+        }
+        {authCtx.isLoggedIn &&
+          <li>
+            <NavLink activeClassName={classes.active} to="/todosList">
+              ToDo
+            </NavLink>
+          </li>
+        }
         {authCtx.isLoggedIn &&
           <li>
             <button onClick={authCtx.logout}>Logout</button>

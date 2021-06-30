@@ -32,13 +32,13 @@ function App() {
           {!authCtx.isLoggedIn && <Redirect to="/" />}
           {authCtx.isLoggedIn && <ChangePasswordPage />}
         </Route>
-        <Route path="/profile">
-          {!authCtx.isLoggedIn && <Redirect to="/" />}
-          {authCtx.isLoggedIn && <ProfilePage />}
-        </Route>
         <Route path="/todosList">
           {!authCtx.isLoggedIn && <Redirect to="/" />}
           {authCtx.isLoggedIn && <TodosList />}
+        </Route>
+        <Route path="/profile">
+          {!authCtx.isLoggedIn && <Redirect to="/" />}
+          {authCtx.isLoggedIn && <ProfilePage />}
         </Route>
       </Switch>
     </Layout>
