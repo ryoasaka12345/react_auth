@@ -1,0 +1,28 @@
+.field {
+	width: 50%;
+    max-width:60rem;
+	margin: 5rem auto;
+	padding: 2rem;
+}
+
+.control {
+	margin: 1rem 0;
+	display: flex;
+	align-items: stretch;
+	flex-direction: column;
+}
+
+.control input {
+    font-size:15pt;
+    padding: 0.5rem;
+}
+
+.control textarea{
+    height: 10rem;
+    font-size: 15pt;
+    padding: 0.5rem;
+}
+
+.control label{
+    font-size: 20pt;
+}

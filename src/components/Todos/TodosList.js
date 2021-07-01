@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
 import Card from "../UI/Card/Card";
 import classes from "./TodosList.module.css";
 import AuthContext from "../../store/AuthContext";
@@ -46,6 +47,7 @@ const TodosList = () => {
 
     return (
         <ul className={classes["todos-list"]}>
+            <h1><NavLink activeClassName={classes.active} to="/todoAdd">add new todo</NavLink></h1>
             {todosList}
         </ul>
     );

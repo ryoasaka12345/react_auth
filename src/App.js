@@ -8,6 +8,7 @@ import SignupPage from './pages/SignupPage';
 import ProfilePage from './pages/ProfilePage';
 import ChangePasswordPage from './pages/ChangePasswordPage';
 import TodosList from './components/Todos/TodosList';
+import TodoAdd from './components/Todos/TodoAdd';
 
 import AuthContext from './store/AuthContext';
 
@@ -35,6 +36,10 @@ function App() {
         <Route path="/todosList">
           {!authCtx.isLoggedIn && <Redirect to="/" />}
           {authCtx.isLoggedIn && <TodosList />}
+        </Route>
+        <Route path="/todoAdd">
+          {!authCtx.isLoggedIn && <Redirect to="/" />}
+          {authCtx.isLoggedIn && <TodoAdd />}
         </Route>
         <Route path="/profile">
           {!authCtx.isLoggedIn && <Redirect to="/" />}
