@@ -9,11 +9,13 @@ import AuthContext from "../../store/AuthContext";
 const TodosList = () => {
     const [todos, setTodos] = useState(null);
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(null);
     const authCtx = useContext(AuthContext);
     const history = useHistory();
     const token = authCtx.token;
 
     useEffect(() => {
+        setIsLoading(true);
         axios.get('http://localhost:5151/todos', {
             headers: {
                 "Authorization": token
@@ -33,6 +35,7 @@ const TodosList = () => {
                 }
                 setError(error.data);
             });
+        setIsLoading(false);
     }, []);
 
     let todosList = <p>No Todo</p>
@@ -48,7 +51,8 @@ const TodosList = () => {
     return (
         <ul className={classes["todos-list"]}>
             <h1><NavLink activeClassName={classes.active} to="/todoAdd">add new todo</NavLink></h1>
-            {todosList}
+            {!isLoading && todosList}
+            {isLoading && <p>Loading todos...</p>}
         </ul>
     );
 };

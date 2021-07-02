@@ -55,29 +55,27 @@ const ChangePasswordForm = () => {
     }
 
     return (
-        <Fragment>
-            <Card className={classes.auth}>
-                {message != null && <p className={classes.error}>{message}</p>}
-                {isShowForm &&
-                    <form onSubmit={submitHandler}>
-                        <div className={classes.control}>
-                            <label htmlFor="password">Password</label>
-                            <input
-                                type="password"
-                                id="password"
-                                ref={passwordInput}
-                                onChange={checkFormValidHandler}
-                            />
-                        </div>
-                        <div className={classes.actions}>
-                            <Button type="submit" className={classes.btn} disabled={!formIsValid}>
-                                Change password
-                            </Button>
-                        </div>
-                    </form>
-                }
-            </Card>
-        </Fragment>
+        <Card className={classes.auth}>
+            {message != null && <p className={classes.error}>{message}</p>}
+            {isShowForm &&
+                <form onSubmit={submitHandler}>
+                    <div className={classes.control}>
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            ref={passwordInput}
+                            onChange={checkFormValidHandler}
+                        />
+                    </div>
+                    <div className={classes.actions}>
+                        <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+                            Change password
+                        </Button>
+                    </div>
+                </form>
+            }
+        </Card>
     );
 }
 

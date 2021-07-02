@@ -46,49 +46,47 @@ const TodoAdd = () => {
                 },
             }
         )
-            .then(response => {
-                if (response.status === 200) {
-                    setMessage("add todo successfully");
-                    window.location.replace("/todosList");
-                    return;
-                }
-                setMessage("add todo failed, please check information!");
-            })
-            .catch((error) => {
-                setMessage(error.message);
-            });
+        .then(response => {
+            if (response.status === 200) {
+                setMessage("add todo successfully");
+                window.location.replace("/todosList");
+                return;
+            }
+            setMessage("add todo failed, please check information!");
+        })
+        .catch((error) => {
+            setMessage(error.message);
+        });
     }
 
 
     return (
-        <Fragment>
-            <Card className={classes.field}>
-                <h1>new todo</h1>
-                <form onSubmit={submitHandler}>
-                    <div className={classes.control}>
-                        <div>
-                            <label>Title</label>
-                        </div>
-                        <input
-                            type="text"
-                            ref={titleInput}
-                            onChange={checkFormValidHandler}
-                        />
-                    </div>
-                    <div className={classes.control}>
-                        <div>
-                            <label>Description</label>
-                        </div>
-                        <textarea ref={descriptionInput} onChange={checkFormValidHandler} />
-                    </div>
+        <Card className={classes.field}>
+            <h1>new todo</h1>
+            <form onSubmit={submitHandler}>
+                <div className={classes.control}>
                     <div>
-                        <Button type="submit" disabled={!isFormValid}>
-                            Submit todo
-                        </Button>
+                        <label>Title</label>
                     </div>
-                </form>
-            </Card>
-        </Fragment>
+                    <input
+                        type="text"
+                        ref={titleInput}
+                        onChange={checkFormValidHandler}
+                    />
+                </div>
+                <div className={classes.control}>
+                    <div>
+                        <label>Description</label>
+                    </div>
+                    <textarea ref={descriptionInput} onChange={checkFormValidHandler} />
+                </div>
+                <div>
+                    <Button type="submit" disabled={!isFormValid}>
+                        Submit todo
+                    </Button>
+                </div>
+            </form>
+        </Card>
     );
 };
 
