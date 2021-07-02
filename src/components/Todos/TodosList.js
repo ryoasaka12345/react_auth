@@ -21,7 +21,7 @@ const TodosList = () => {
                 "Authorization": token
             }
         })
-            .then(response => {
+            .then((response) => {
                 setTodos(response.data.data);
                 setError(null);
                 console.log(response.data.data);
@@ -34,8 +34,10 @@ const TodosList = () => {
                     }
                 }
                 setError(error.data);
+            })
+            .then(() => {
+                setIsLoading(false);
             });
-        setIsLoading(false);
     }, []);
 
     let todosList = <p>No Todo</p>

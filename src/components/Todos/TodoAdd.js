@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useRef, useContext } from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router";
 
 import Card from '../UI/Card/Card';
 import Button from '../UI/Button/Button';
@@ -11,6 +11,7 @@ import AuthContext from "../../store/AuthContext";
 const TodoAdd = () => {
     const [isFormValid, setIsFormValid] = useState(false);
     const [message, setMessage] = useState(null);
+    const history = useHistory();
 
     const authCtx = useContext(AuthContext);
     const token = authCtx.token;
@@ -48,8 +49,7 @@ const TodoAdd = () => {
         )
             .then(response => {
                 if (response.status === 200) {
-                    setMessage("add todo successfully");
-                    window.location.replace("/todosList");
+                    history.push("/todosList");
                     return;
                 }
                 setMessage("add todo failed, please check information!");
