@@ -46,17 +46,17 @@ const TodoAdd = () => {
                 },
             }
         )
-        .then(response => {
-            if (response.status === 200) {
-                setMessage("add todo successfully");
-                window.location.replace("/todosList");
-                return;
-            }
-            setMessage("add todo failed, please check information!");
-        })
-        .catch((error) => {
-            setMessage(error.message);
-        });
+            .then(response => {
+                if (response.status === 200) {
+                    setMessage("add todo successfully");
+                    window.location.replace("/todosList");
+                    return;
+                }
+                setMessage("add todo failed, please check information!");
+            })
+            .catch((error) => {
+                setMessage(error.message);
+            });
     }
 
 
