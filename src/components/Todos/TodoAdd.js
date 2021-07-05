@@ -55,6 +55,12 @@ const TodoAdd = () => {
                 setMessage("add todo failed, please check information!");
             })
             .catch((error) => {
+                if (error.response) {
+                    if (error.response.status == 401) {
+                        history.push("/login");
+                        return;
+                    }
+                }
                 setMessage(error.message);
             });
     }

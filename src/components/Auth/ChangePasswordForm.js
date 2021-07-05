@@ -1,4 +1,5 @@
 import React, { useState, useRef, Fragment, useContext } from 'react';
+import { useHistory } from 'react-router';
 import axios from "axios";
 
 import Card from '../UI/Card/Card';
@@ -10,6 +11,7 @@ const ChangePasswordForm = () => {
     const [formIsValid, setformIsValid] = useState(false);
     const [isShowForm, setShowForm] = useState(true);
     const [message, setMessage] = useState(null);
+    const history = useHistory();
 
     const authCtx = useContext(AuthContext);
     const token = authCtx.token;
@@ -50,6 +52,12 @@ const ChangePasswordForm = () => {
                 setMessage("Change password failed, please check information!");
             })
             .catch((error) => {
+                if (error.response) {
+                    if (error.response.status == 401) {
+                        history.push("/login");
+                        return;
+                    }
+                }
                 setMessage(error.message);
             });
     }
